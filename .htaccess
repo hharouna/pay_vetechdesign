@@ -1,0 +1,64 @@
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP_HOST} ^(?:www\.)?formation.vetechdesign\.net(?:.*)$ [nc]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [redirect=301,L]
+
+RewriteEngine on
+
+
+#Lien d'activation 
+RewriteRule ^active/0/([0-9]+)/([0-9a-zA-Z@_.]+)/([0-9a-zA-Z@_.]+)/([0-9a-zA-Z@_.]+)  contenu/functionphp/activation.php?idincs=$1&pseudo=$2&email=$3&ssl=$4   [L]
+RewriteRule ^mdp/0/([0-9]+)/([0-9]+)/([0-9]+) contenu/functionphp/mdp.php?idincs=$1&temps=$2&idcontrole=$3   [L]
+RewriteRule ^mdp/0/mdpcontrole contenu/functionphp/mdpcontrole.php  [L]
+RewriteRule ^valider/mdp contenu/functionphp/validermdp.php  [L]
+
+
+RewriteRule ^ngbath?$ index.php [L]
+
+RewriteRule ^connexion?$ compte.php
+RewriteRule ^connexion/accueil?$ contenu/accueil/accueil.php [L]	
+RewriteRule ^connexion/projet?$ contenu/publicngbath/projet.php [L]
+RewriteRule ^connexion/impression?$ contenu/impression/impression.php [L]	
+RewriteRule ^connexion/document?$ contenu/document/document.php [L]	
+RewriteRule ^connexion/boutique?$ contenu/boutique/boutique.php [L]	
+RewriteRule ^connexion/contact?$ contenu/contact/Contact.php [L]	
+
+RewriteRule ^ngbath/contenubrief?$ contenu/publicngbath/contenubrief.php [L]
+
+ RewriteRule ^connexion/accueil/image?$ contenu/accueil/image/ [L]	
+
+RewriteRule ^connexion/spinner?$ contenu/publicngbath/spinner.gif [L]
+RewriteRule ^connexion/loader?$ image/loader.gif [L]
+
+#ensemble des urls pied de page -- NGBATH--
+
+RewriteRule ^connexion/piedpage/mention?$ contenu/piedpage/contenu/mentionslegal.html [L]	
+RewriteRule ^connexion/piedpage/impression?$ contenu/piedpage/contenu/impression.html [L]
+RewriteRule ^connexion/piedpage/histoire?$ contenu/piedpage/contenu/histoire.html [L]
+RewriteRule ^connexion/piedpage/formation?$ contenu/piedpage/contenu/Formation.html [L]
+RewriteRule ^connexion/piedpage/espacepress?$ contenu/piedpage/contenu/espacepress.html [L]
+RewriteRule ^connexion/piedpage/equipe?$ contenu/piedpage/contenu/equipe.php [L]
+RewriteRule ^connexion/piedpage/plansite?$ contenu/piedpage/contenu/plansite.php [L]
+RewriteRule ^connexion/piedpage/concept?$ contenu/piedpage/contenu/concept.html [L]
+RewriteRule ^connexion/piedpage/Aide?$ contenu/piedpage/contenu/Aide.html [L]
+RewriteRule ^connexion/piedpage/cgu?$ contenu/piedpage/contenu/cgu.html [L]
+RewriteRule ^connexion/piedpage/cgv?$ contenu/piedpage/contenu/cgv.html [L]
+RewriteRule ^connexion/piedpage/publicprojet?$ contenu/piedpage/contenu/publicationprojet.html [L]
+
+
+
+
+#ensemble des urls impression -- NGBATH--
+RewriteRule ^connexion/print?$ contenu/impression/impression.php [L]
+RewriteRule ^connexion/controleprint?$ contenu/impression/controleprint.php [L]
+
+RewriteRule ^erreur/401?$ contenu/erreur/401.php [L]
+RewriteRule ^erreur/402?$ contenu/erreur/402.php [L]
+RewriteRule ^/erreur/403?$ contenu/erreur/403.php [L]
+RewriteRule ^erreur/404?$ contenu/erreur/404.php [L]
+
+#ensemble des urls  des  erreurs -- NGBATH--
+ErrorDocument 401 https://formation.vetechdesign.net/erreur/401
+ErrorDocument 402 https://formation.vetechdesign.net/erreur/402
+ErrorDocument 403 /erreur/403
+ErrorDocument 404 https://formation.vetechdesign.net/erreur/404

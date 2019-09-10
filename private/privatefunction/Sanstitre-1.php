@@ -1,0 +1,1 @@
+<?php include('acces_db.php'); ?>
